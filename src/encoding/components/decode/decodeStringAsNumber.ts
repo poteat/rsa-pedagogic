@@ -1,7 +1,4 @@
-import anyBase from "any-base";
-
-import { maxStringDecodingLength } from "../../configuration/maxStringDecodingLength";
-import { permissibleEncodingCharacters } from "../../literals/permissibleEncodingCharacters";
+import { split, toLower } from "lodash";
 
 /**
  * Decode a string to a lengthened decimal integer.
@@ -9,10 +6,13 @@ import { permissibleEncodingCharacters } from "../../literals/permissibleEncodin
  * @param s String to decode to a number.
  */
 export function decodeStringAsNumber(s: string) {
-  if (s.length > maxStringDecodingLength) {
-    throw new Error(`String too large to decode as a single number.`);
-  }
+  const beginRange = "a".charCodeAt(0);
 
-  const lengthen = anyBase(permissibleEncodingCharacters, anyBase.DEC);
-  return Number(`${lengthen(s)}`);
+  const trimmed = toLower(s).replace(/[^a-z]/g, "");
+
+  const mapped = split(trimmed, "")
+    .map((x) => x.charCodeAt(0) - beginRange + 1)
+    .map((x) => (x < 10 ? `0${x}` : x));
+
+  return Number(mapped.join(""));
 }

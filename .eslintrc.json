@@ -30,6 +30,7 @@
     "lodash/import-scope": [2, "member"],
     "lodash-fp/no-chain": "off",
     "lodash/chaining": "off",
-    "no-secrets/no-secrets": "off"
+    "no-secrets/no-secrets": "off",
+    "lodash/prefer-invoke-map": "off"
   }
 }
