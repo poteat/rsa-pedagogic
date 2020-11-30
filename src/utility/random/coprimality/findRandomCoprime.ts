@@ -1,7 +1,6 @@
-import * as arith from "bigint-mod-arith";
+import * as arith from "bigint-crypto-utils";
 
 import { maxRandomSamplings } from "../configuration/maxRandomSamplings";
-import { maxSafePrime } from "../configuration/primes/maxSafePrime";
 import { chance } from "../general/chance";
 
 /**
@@ -13,7 +12,7 @@ import { chance } from "../general/chance";
  */
 export function findRandomCoprime(x: bigint) {
   for (let attempt = 0; attempt < maxRandomSamplings; attempt++) {
-    const randomNumber = chance.integer({ min: 1, max: maxSafePrime });
+    const randomNumber = chance.integer({ min: 1 });
 
     if (arith.gcd(randomNumber, x) === BigInt(1)) {
       return BigInt(randomNumber);

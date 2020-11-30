@@ -4,9 +4,9 @@
  */
 export type MinimalPrivateKeyContext = {
   public: {
-    n: number;
+    n: number | bigint;
   };
   private: {
-    d: number;
+    d: number | bigint;
   };
 };

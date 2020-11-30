@@ -1,4 +1,4 @@
-import * as arith from "bigint-mod-arith";
+import * as arith from "bigint-crypto-utils";
 
 import { MinimalPrivateKeyContext } from "../../../context/types/minimal/private/MinimalPrivateKeyContext";
 

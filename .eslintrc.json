@@ -31,6 +31,7 @@
     "lodash-fp/no-chain": "off",
     "lodash/chaining": "off",
     "no-secrets/no-secrets": "off",
-    "lodash/prefer-invoke-map": "off"
+    "lodash/prefer-invoke-map": "off",
+    "unicorn/no-process-exit": "off"
   }
 }

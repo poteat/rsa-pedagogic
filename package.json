@@ -11,7 +11,8 @@
     "lint": "eslint --fix --color ./src/**/*",
     "prepublishOnly": "npm run clean && npm run build",
     "postpublish": "git push && git push --tags",
-    "upgrade": "ncu -u && npm i"
+    "upgrade": "ncu -u && npm i",
+    "start": "ts-node ./src/driver/driver.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
   },
   "homepage": "https://github.com/poteat/rsa-pedagogic#readme",
   "devDependencies": {
+    "@types/chalk": "^2.2.0",
     "@types/chance": "^1.1.0",
     "@types/lodash": "^4.14.161",
     "@types/node": "^14.11.2",
@@ -69,10 +71,9 @@
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "any-base": "^1.1.0",
-    "bigint-mod-arith": "^2.0.8",
+    "bigint-crypto-utils": "^3.0.9",
+    "chalk": "^4.1.0",
     "chance": "^1.1.7",
-    "get-prime-factors": "^1.0.0",
-    "random-prime": "^1.0.0"
+    "yargs": "^15.4.1"
   }
 }

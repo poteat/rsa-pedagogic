@@ -1,4 +1,4 @@
-import { randomPrime } from "random-prime";
+import * as arith from "bigint-crypto-utils";
 
 import { maxRandomSamplings } from "../random/configuration/maxRandomSamplings";
 
@@ -9,7 +9,7 @@ import { maxRandomSamplings } from "../random/configuration/maxRandomSamplings";
  */
 export function randomPrimeNotEqualTo(max: number, notEqual: bigint) {
   for (let attempt = 0; attempt < maxRandomSamplings; attempt++) {
-    const prime = randomPrime(max);
+    const prime = arith.primeSync(max);
 
     if (BigInt(prime) !== notEqual) {
       return prime;
