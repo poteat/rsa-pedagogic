@@ -5,6 +5,3 @@ coverage
 
 # Temporary cached TS build info
 *.tsbuildinfo
-
-# Package lock file
-package-lock.json
