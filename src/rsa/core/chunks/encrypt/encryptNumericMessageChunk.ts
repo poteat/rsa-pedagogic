@@ -10,7 +10,7 @@ import { MinimalPublicKeyContext } from "../../../context/types/minimal/public/M
  */
 export function encryptNumericMessageChunk(
   context: MinimalPublicKeyContext,
-  m: number
+  m: number | bigint
 ) {
   return arith.modPow(m, context.public.e, context.public.n);
 }

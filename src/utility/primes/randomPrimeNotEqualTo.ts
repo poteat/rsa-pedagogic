@@ -7,11 +7,11 @@ import { maxRandomSamplings } from "../random/configuration/maxRandomSamplings";
  *
  * @param notEqual Number to exclude from resultant random prime.
  */
-export function randomPrimeNotEqualTo(max: number, notEqual: number) {
+export function randomPrimeNotEqualTo(max: number, notEqual: bigint) {
   for (let attempt = 0; attempt < maxRandomSamplings; attempt++) {
     const prime = randomPrime(max);
 
-    if (prime !== notEqual) {
+    if (BigInt(prime) !== notEqual) {
       return prime;
     }
   }

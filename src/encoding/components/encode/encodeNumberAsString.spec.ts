@@ -2,7 +2,7 @@ import { decodeStringAsNumber } from "../decode/decodeStringAsNumber";
 import { encodeNumberAsString } from "./encodeNumberAsString";
 
 it("can encode numbers to string", () => {
-  const num = 23094239834;
+  const num = 7777;
 
   const s = encodeNumberAsString(num);
 

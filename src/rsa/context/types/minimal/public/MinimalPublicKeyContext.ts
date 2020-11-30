@@ -3,7 +3,7 @@
  */
 export type MinimalPublicKeyContext = {
   public: {
-    e: number;
-    n: number;
+    e: number | bigint;
+    n: number | bigint;
   };
 };

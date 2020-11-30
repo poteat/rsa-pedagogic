@@ -3,10 +3,9 @@ import { generateRSAEncryptionContext } from "./generateRSAEncryptionContext";
 it("can generate valid rsa context", () => {
   const context = generateRSAEncryptionContext();
 
-  console.log(context);
-
   expect(
-    (context.public.e * context.private.d) %
-      ((context.private.p - 1) * (context.private.q - 1))
-  ).toBe(1);
+    (BigInt(context.public.e) * BigInt(context.private.d)) %
+      ((BigInt(context.private.p) - BigInt(1)) *
+        (BigInt(context.private.q) - BigInt(1)))
+  ).toBe(BigInt(1));
 });

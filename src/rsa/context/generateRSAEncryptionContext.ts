@@ -1,3 +1,4 @@
+import * as arith from "bigint-mod-arith";
 import { randomPrime } from "random-prime";
 
 import { solveLinearCongruence } from "../../utility/congruence/solve/solveLinearCongruence";
@@ -11,16 +12,12 @@ import { EncryptionContext } from "./types/EncryptionContext";
  * to encrypt and decrypt data in the RSA algorithm.
  */
 export function generateRSAEncryptionContext(): EncryptionContext {
-  const p = randomPrime(maxSafePrime);
-  const q = randomPrimeNotEqualTo(maxSafePrime, p);
+  const p = BigInt(randomPrime(maxSafePrime));
+  const q = BigInt(randomPrimeNotEqualTo(maxSafePrime, p));
   const n = p * q;
-  const e = findRandomCoprime((p - 1) * (q - 1));
+  const e = findRandomCoprime((p - BigInt(1)) * (q - BigInt(1)));
 
-  const d = solveLinearCongruence({
-    multiplicative: e,
-    offset: 1,
-    modulus: (p - 1) * (q - 1),
-  });
+  const d = arith.modInv(e, (p - BigInt(1)) * (q - BigInt(1)));
 
   if (!d) {
     throw new Error("Resultant linear congruence did not have solution.");

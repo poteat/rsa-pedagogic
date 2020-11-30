@@ -73,7 +73,6 @@
     "bigint-mod-arith": "^2.0.8",
     "chance": "^1.1.7",
     "get-prime-factors": "^1.0.0",
-    "is-coprime": "^1.0.0",
     "random-prime": "^1.0.0"
   }
 }

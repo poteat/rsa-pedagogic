@@ -1,5 +1,4 @@
-import isCoprime from "is-coprime";
-import { isSafeInteger } from "lodash";
+import * as arith from "bigint-mod-arith";
 
 import { maxRandomSamplings } from "../configuration/maxRandomSamplings";
 import { maxSafePrime } from "../configuration/primes/maxSafePrime";
@@ -12,18 +11,12 @@ import { chance } from "../general/chance";
  *
  * @param x Number that the generated number must be coprime to.
  */
-export function findRandomCoprime(x: number) {
-  if (!isSafeInteger(x)) {
-    throw new Error(
-      `Coprime parameter must be a safe integer, received: ${x}.`
-    );
-  }
-
+export function findRandomCoprime(x: bigint) {
   for (let attempt = 0; attempt < maxRandomSamplings; attempt++) {
     const randomNumber = chance.integer({ min: 1, max: maxSafePrime });
 
-    if (isCoprime(randomNumber, x)) {
-      return randomNumber;
+    if (arith.gcd(randomNumber, x) === BigInt(1)) {
+      return BigInt(randomNumber);
     }
   }
 

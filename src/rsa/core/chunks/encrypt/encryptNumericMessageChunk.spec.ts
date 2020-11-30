@@ -10,9 +10,7 @@ it("can encrypt numeric message chunks", () => {
 
   const encrypted = encryptNumericMessageChunk(context, message);
 
-  console.log(encrypted);
-
   const decrypted = decryptNumericMessageChunk(context, encrypted);
 
-  expect(decrypted).toStrictEqual(message);
+  expect(decrypted).toStrictEqual(BigInt(message));
 });
