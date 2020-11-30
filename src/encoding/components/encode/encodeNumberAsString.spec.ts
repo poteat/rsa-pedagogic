@@ -5,3 +5,9 @@ it("can encode numbers as strings", () => {
 
   expect(encodeNumberAsString(number)).toStrictEqual("cat");
 });
+
+it("can decode strange case", () => {
+  const number = 14152019010605;
+
+  expect(encodeNumberAsString(number)).toStrictEqual("notsafe");
+});

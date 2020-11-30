@@ -8,6 +8,7 @@ import { encryptNumericMessageChunk } from "../rsa/core/chunks/encrypt/encryptNu
 
 const message = argv._[0];
 const lecture = argv["lecture"] as boolean | undefined;
+const assignment = argv["assignment"] as boolean | undefined;
 
 if (!message) {
   console.error(
@@ -19,7 +20,11 @@ if (!message) {
 }
 
 const context = generateRSAEncryptionContext(
-  lecture ? { p: 885320963, q: 238855417, e: 9007 } : undefined
+  lecture
+    ? { p: 885320963, q: 238855417, e: 9007 }
+    : assignment
+    ? { p: 123456791, q: 987654323, e: 127 }
+    : undefined
 );
 
 const encodedMessage = decodeStringAsNumber(message);
